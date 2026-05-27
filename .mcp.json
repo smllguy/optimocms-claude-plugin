@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "optimocms": {
+      "url": "https://europe-west4-cms-sg.cloudfunctions.net/mcpServer",
+      "headers": {
+        "Authorization": "Bearer ${OPTIMOCMS_API_KEY}"
+      }
+    }
+  }
+}
