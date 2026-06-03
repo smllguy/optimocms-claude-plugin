@@ -115,7 +115,9 @@ Rate limits per tier:
 ```
 MCP:
 1. list_sites() → check current sites
-2. generate_page(siteId, prompt, language?) → AI creates page (€0.05–0.50/call)
+2. generate_page(siteId, prompt, language?, useHeroVideo?, videoModelId?) → AI creates page (€0.05–0.50/call)
+   - useHeroVideo: true → generates AI hero video (Professional+ plans)
+   - videoModelId: 'seedance-fast' (1 credit, default), 'seedance-standard' (2 credits), 'kling-standard' (1 credit)
 3. publish_site(siteId) → deploy to production
 
 SDK:
@@ -123,6 +125,8 @@ const result = await client.ai.generateSite({
   name: 'La Bella Pizzeria',
   prompt: 'Italian restaurant with online menu and reservations',
   language: 'nl',
+  useHeroVideo: true,
+  videoModelId: 'seedance-fast',
   pages: [
     { prompt: 'Homepage with hero and featured dishes' },
     { prompt: 'Menu page with categories and prices' },
@@ -290,7 +294,7 @@ for (const city of franchises) {
 
 | Action | Cost | Rate Limit |
 |--------|------|-----------|
-| `generate_page` | ~€0.05–0.50 per call | 2/min |
+| `generate_page` | ~€0.05–0.50 per call (+video: 1-2 credits) | 2/min |
 | `generate_template` | ~€0.10–0.50 per call | 2/min |
 | `generate_template_variants` | ~€0.20–1.00 per call | 2/min |
 | `translate_page` | ~€0.05–0.20 per call | 5/min |
